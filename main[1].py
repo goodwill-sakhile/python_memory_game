@@ -7,6 +7,7 @@ from touch import TouchBox
 import _thread as thread
 import time
 import random
+from runnning_time_header_box import TopTimeBox
 root = Builder.load_string("""
 <BoardBox>:
 	md_bg_color:[190/float(255), 190/float(255), 190/float(255), 1]
@@ -19,6 +20,9 @@ root = Builder.load_string("""
 		size:self.parent.size
 		MDBoxLayout:
 			pos:self.parent.pos
+			orientation:"vertical"
+			TopTimeBox:
+				id:top_time_box
 			BlocksLayout:
 				root:main_game_box
 				pos:self.parent.pos
@@ -194,13 +198,23 @@ class MainGameBox(MDBoxLayout):
 		self.stage = 1
 		self.answers = []
 		self.selection_open = False
-class MainApp(MDApp):
+		self.run_timer = True
+	def checkTimer(self):
+		while self.run_timer:
+			if ((self.ids.top_time_box.minutes == 0) and (self.ids.top_time_box.seconds == 0)):
+				print("Time is Up")
+				self.run_timer = False
+			else:
+				pass
+class MainApp(MDApp):		
 	def build(self):
 		root = MainGameBox()
 		boxes_numbers = root.ids.grid_layout.getBoxesNumbersRandomly()
 		print("Boxes: ", boxes_numbers)
 		root.answers = boxes_numbers
 		thread.start_new_thread(root.ids.grid_layout.pickBoxes, (boxes_numbers, ))
+		thread.start_new_thread(root.ids.top_time_box.countDown, ())
+		thread.start_new_thread(root.checkTimer, ())
 		return root
 if __name__  == "__main__":
 	MainApp().run()
