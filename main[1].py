@@ -206,7 +206,8 @@ class MainGameBox(MDBoxLayout):
 				self.run_timer = False
 			else:
 				pass
-class MainApp(MDApp):		
+class MainApp(MDApp):	
+	#memory game app loop object	
 	def build(self):
 		root = MainGameBox()
 		boxes_numbers = root.ids.grid_layout.getBoxesNumbersRandomly()
