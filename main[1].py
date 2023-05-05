@@ -137,6 +137,7 @@ class BoardBox(TouchBox):
 		grid_layout.root.ids.top_layer_screen_manager.transition = NoTransition()
 		grid_layout.root.ids.top_layer_screen_manager.current = "results_screen"
 	def displayAllErrorBox(self):
+		#mark all errors as red and display them
 		grid_layout = self.parent
 		for box in grid_layout.list_of_error_box:
 			box.md_bg_color = [255/float(255), 0, 0, 1]
@@ -217,4 +218,7 @@ class MainApp(MDApp):
 		root.answers = boxes_numbers
 		thread.start_new_thread(root.ids.grid_layout.pickBoxes, (boxes_numbers, ))
 		thread.start_new_thread(root.ids.top_time_box.countDown, ())
-		thread.start_new_thread(root.checkTimer, (
+		thread.start_new_thread(root.checkTimer, ())
+		return root
+if __name__  == "__main__":
+	MainApp().run()
