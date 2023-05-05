@@ -18,9 +18,10 @@ root = Builder.load_string("""
 class TopTimeBox(MDBoxLayout):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		self.minutes = 10
-		self.seconds = 60
+		self.minutes = 0
+		self.seconds = 10
 	def countDown(self):
+		#count down timer for playing the game (intervals are seconds)
 		while (self.minutes >= 0):
 			if self.seconds == 0 and self.minutes > 0:
 				self.seconds = 59
