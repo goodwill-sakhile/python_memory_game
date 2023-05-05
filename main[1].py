@@ -142,6 +142,7 @@ class BoardBox(TouchBox):
 		for box in grid_layout.list_of_error_box:
 			box.md_bg_color = [255/float(255), 0, 0, 1]
 	def markAsError(self):
+		#color errors as red
 		self.md_bg_color = [255/float(255), 20/float(255), 20/float(255), 1]
 		time.sleep(float(0.6))
 		self.md_bg_color = [190/float(255), 190/float(255), 190/float(255), 1]
@@ -151,6 +152,7 @@ class BlocksLayout(MDGridLayout):
 		self.error = 0
 		self.list_of_error_box = []
 	def addBoxes(self): 
+		#add boxes on grid
 		for i in range((self.cols)**2):
 			box = BoardBox()
 			self.add_widget(box)
