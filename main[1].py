@@ -119,6 +119,7 @@ class BoardBox(TouchBox):
 			grid_layout.root.ids.result_message_label.text = "Congratulations you passed the level!"
 			self.displayPopUpResultBox()
 	def countAsError(self):
+		#increment errors
 		grid_layout = self.parent
 		grid_layout.error += 1
 		print(grid_layout.error)
@@ -131,6 +132,7 @@ class BoardBox(TouchBox):
 		elif grid_layout.error < 3:
 			thread.start_new_thread(self.markAsError, ())
 	def displayPopUpResultBox(self):
+		#display results of success or failure
 		grid_layout = self.parent
 		grid_layout.root.ids.top_layer_screen_manager.transition = NoTransition()
 		grid_layout.root.ids.top_layer_screen_manager.current = "results_screen"
@@ -215,7 +217,4 @@ class MainApp(MDApp):
 		root.answers = boxes_numbers
 		thread.start_new_thread(root.ids.grid_layout.pickBoxes, (boxes_numbers, ))
 		thread.start_new_thread(root.ids.top_time_box.countDown, ())
-		thread.start_new_thread(root.checkTimer, ())
-		return root
-if __name__  == "__main__":
-	MainApp().run()
+		thread.start_new_thread(root.checkTimer, (
