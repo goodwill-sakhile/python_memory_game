@@ -178,6 +178,7 @@ class BlocksLayout(MDGridLayout):
 				chosen_boxes_numbers.append(box_number - 1)
 		return chosen_boxes_numbers
 	def pickBoxes(self, boxes_numbers_list):
+		#randomly picks boxes 
 		layout_boxes_number = len(self.children)
 		for number in boxes_numbers_list:
 			box = self.children[number]
@@ -223,5 +224,3 @@ class MainApp(MDApp):
 		thread.start_new_thread(root.ids.grid_layout.pickBoxes, (boxes_numbers, ))
 		thread.start_new_thread(root.ids.top_time_box.countDown, ())
 		thread.start_new_thread(root.checkTimer, ())
-		return root
-if __name__
