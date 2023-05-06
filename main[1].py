@@ -157,6 +157,7 @@ class BlocksLayout(MDGridLayout):
 			box = BoardBox()
 			self.add_widget(box)
 	def moveToNextStage(self):
+		#move use to the next stage
 		main_game_box  = self.root
 		self.clear_widgets()
 		main_game_box.stage += 1
