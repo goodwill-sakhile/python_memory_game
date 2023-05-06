@@ -165,6 +165,7 @@ class BlocksLayout(MDGridLayout):
 		self.rows = main_game_box.stage + 1
 		self.addBoxes()
 	def getBoxesNumbersRandomly(self):
+		#determine the number of boxes
 		chosen_boxes_numbers = []
 		main_game_box  = self.root
 		number_of_boxes = ((main_game_box.stage + 1)**2)
@@ -223,5 +224,4 @@ class MainApp(MDApp):
 		thread.start_new_thread(root.ids.top_time_box.countDown, ())
 		thread.start_new_thread(root.checkTimer, ())
 		return root
-if __name__  == "__main__":
-	MainApp().run()
+if __name__
