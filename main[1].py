@@ -178,7 +178,7 @@ class BlocksLayout(MDGridLayout):
 				chosen_boxes_numbers.append(box_number - 1)
 		return chosen_boxes_numbers
 	def pickBoxes(self, boxes_numbers_list):
-		#randomly picks boxes 
+		#randomly picks boxes d
 		layout_boxes_number = len(self.children)
 		for number in boxes_numbers_list:
 			box = self.children[number]
@@ -188,12 +188,14 @@ class BlocksLayout(MDGridLayout):
 			box.md_bg_color = [190/float(255), 190/float(255), 190/float(255), 1]
 		self.root.selection_open = True
 	def playNextStage(self):
+		#moves to the next stage when user press ok button
 		self.error = 0
 		self.moveToNextStage()
 		boxes_numbers = self.getBoxesNumbersRandomly()
 		self.root.answers  = boxes_numbers
 		thread.start_new_thread(self.pickBoxes, (boxes_numbers, ))
 	def repeatStage(self):
+		
 		self.error = 0
 		self.clear_widgets()
 		self.addBoxes()
@@ -224,3 +226,6 @@ class MainApp(MDApp):
 		thread.start_new_thread(root.ids.grid_layout.pickBoxes, (boxes_numbers, ))
 		thread.start_new_thread(root.ids.top_time_box.countDown, ())
 		thread.start_new_thread(root.checkTimer, ())
+		return root
+if __name__  == "__main__":
+	MainApp().run()
