@@ -18,6 +18,7 @@ root = Builder.load_string("""
 class TopTimeBox(MDBoxLayout):
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
+		#initial minutes and seconds setting
 		self.minutes = 0
 		self.seconds = 10
 	def countDown(self):
