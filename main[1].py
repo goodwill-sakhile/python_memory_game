@@ -195,7 +195,7 @@ class BlocksLayout(MDGridLayout):
 		self.root.answers  = boxes_numbers
 		thread.start_new_thread(self.pickBoxes, (boxes_numbers, ))
 	def repeatStage(self):
-		
+		#repeat stage when user failed
 		self.error = 0
 		self.clear_widgets()
 		self.addBoxes()
@@ -227,5 +227,4 @@ class MainApp(MDApp):
 		thread.start_new_thread(root.ids.top_time_box.countDown, ())
 		thread.start_new_thread(root.checkTimer, ())
 		return root
-if __name__  == "__main__":
-	MainApp().run()
+if __name__  =
